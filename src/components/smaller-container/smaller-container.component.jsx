@@ -8,8 +8,8 @@ const SmallerContainer = (props) => {
         style={{ backgroundImage: `url(${imageUrl})` }}
       ></div>
       <div className="body-container">
-        <h2>{title}</h2>
-        <p>Shop Now</p>
+        <h2>{title.toLocaleUpperCase()}</h2>
+        <p>SHOP NOW</p>
       </div>
     </div>
   );
