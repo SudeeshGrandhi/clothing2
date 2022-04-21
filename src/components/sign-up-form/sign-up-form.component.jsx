@@ -10,6 +10,7 @@ import FormInput from "../form-input/form-input.component";
 import "./sign-up-form.styles.scss";
 
 import Button from "../button/button.component";
+
 const SignUpForm = () => {
   const defaultFormFields = {
     displayName: "",
@@ -43,6 +44,7 @@ const SignUpForm = () => {
         password
       );
       const { user } = response;
+
       createUserDocumentFromAuth(user, { displayName });
       resetFormfield();
     } catch (err) {

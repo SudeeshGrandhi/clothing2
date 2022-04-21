@@ -2,6 +2,7 @@ import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
 import { useState } from "react";
+
 import {
   signInAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -13,6 +14,7 @@ const SignInForm = () => {
   const defaultFormFields = { email: "", password: "" };
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
+
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
@@ -24,10 +26,8 @@ const SignInForm = () => {
   const onSubmitChange = async (event) => {
     event.preventDefault();
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
+      await signInAuthUserWithEmailAndPassword(email, password);
+
       resetFormfield();
     } catch (error) {
       switch (error.code) {
@@ -44,9 +44,7 @@ const SignInForm = () => {
   };
 
   const fetchGoogleUser = async () => {
-    const response = await signInWithGooglePopup();
-    const { user } = response;
-    await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   return (
